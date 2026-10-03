@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WEBMOON — Your Vision. Our Web.</title>
+
+<meta name="description"
+content="Webmoon creates modern, responsive and creative websites for businesses, brands and individuals.">
+
+<style>
+
+:root{
+  --black:#080808;
+  --black2:#111111;
+  --cream:#f5edda;
+  --cream2:#fffaf0;
+  --gold:#d4af37;
+  --gold2:#f0d477;
+  --muted:#b8b09f;
+  --line:rgba(212,175,55,.22);
+  --glass:rgba(255,255,255,.045);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--black);
+  color:var(--cream);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(212,175,55,.07),transparent 25%),
+    radial-gradient(circle at 85% 70%,rgba(212,175,55,.05),transparent 25%);
+}
+
+/* LOADER */
+
+.loader{
+  position:fixed;
+  inset:0;
+  background:#080808;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+  transition:opacity .7s ease,visibility .7s ease;
+}
+
+.loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader-content{
+  text-align:center;
+}
+
+.loader-moon{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  border:2px solid var(--gold);
+  margin:auto;
+  position:relative;
+  animation:spin 2s linear infinite;
+}
+
+.loader-moon:after{
+  content:"";
+  position:absolute;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  background:#080808;
+  top:-8px;
+  left:15px;
+}
+
+.loader-text{
+  margin-top:20px;
+  letter-spacing:7px;
+  color:var(--gold);
+  font-size:13px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:5000;
+  padding:18px 5%;
+  transition:.4s ease;
+}
+
+.navbar.scrolled{
+  background:rgba(8,8,8,.92);
+  backdrop-filter:blur(18px);
+  box-shadow:0 10px 35px rgba(0,0,0,.35);
+  padding-top:12px;
+  padding-bottom:12px;
+}
+
+.nav-container{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+}
+
+.logo{
+  color:var(--cream);
+  text-decoration:none;
+  font-size:23px;
+  font-weight:800;
+  letter-spacing:4px;
+  white-space:nowrap;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.nav-links a{
+  color:#ddd5c4;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  transition:.3s ease;
+}
+
+.nav-links a:hover{
+  color:var(--gold);
+}
+
+.menu-btn{
+  display:none;
+  width:45px;
+  height:45px;
+  border:1px solid var(--gold);
+  border-radius:12px;
+  background:#090909;
+  cursor:pointer;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  z-index:6000;
+}
+
+.menu-btn span{
+  display:block;
+  width:22px;
+  height:2px;
+  background:var(--gold);
+  border-radius:10px;
+  transition:.3s ease;
+}
+
+.menu-btn.active span:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+
+.menu-btn.active span:nth-child(2){
+  opacity:0;
+}
+
+.menu-btn.active span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+
+/* GENERAL */
+
+section{
+  padding:110px 6%;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:55px;
+}
+
+.section-title .small{
+  color:var(--gold);
+  letter-spacing:4px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.section-title h2{
+  font-size:clamp(2rem,5vw,3.5rem);
+  margin:10px 0;
+}
+
+.section-title p{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+}
+
+.gold{
+  color:var(--gold);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 20px 70px;
+  position:relative;
+  overflow:hidden;
+}
+
+.stars{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(circle,#fff 1px,transparent 1px),
+    radial-gradient(circle,#d4af37 1px,transparent 1px);
+  background-size:80px 80px,130px 130px;
+  opacity:.25;
+  animation:starsMove 20s linear infinite;
+}
+
+@keyframes starsMove{
+  from{transform:translateY(0)}
+  to{transform:translateY(-80px)}
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:850px;
+}
+
+.moon-wrap{
+  width:160px;
+  height:160px;
+  margin:0 auto 35px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.moon{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#fff8df,#d4af37);
+  box-shadow:
+    0 0 30px rgba(212,175,55,.35),
+    0 0 90px rgba(212,175,55,.12);
+  animation:moonFloat 4s ease-in-out infinite;
+}
+
+@keyframes moonFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+.orbit{
+  position:absolute;
+  width:155px;
+  height:65px;
+  border:1px solid rgba(212,175,55,.55);
+  border-radius:50%;
+  transform:rotate(-25deg);
+  animation:orbit 7s linear infinite;
+}
+
+.orbit:after{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--gold);
+  position:absolute;
+  right:8px;
+  top:5px;
+  box-shadow:0 0 15px var(--gold);
+}
+
+@keyframes orbit{
+  to{transform:rotate(335deg)}
+}
+
+.hero h1{
+  font-size:clamp(3rem,9vw,7.5rem);
+  line-height:.95;
+  letter-spacing:-5px;
+}
+
+.hero h1 span{
+  color:var(--gold);
+}
+
+.hero-subtitle{
+  margin:25px auto;
+  font-size:clamp(1rem,2vw,1.25rem);
+  color:#c8c0af;
+}
+
+.hero-description{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+}
+
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:35px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:0 25px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14px;
+  transition:.35s ease;
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:#080808;
+}
+
+.btn-gold:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px rgba(212,175,55,.25);
+}
+
+.btn-outline{
+  color:var(--cream);
+  border:1px solid var(--line);
+}
+
+.btn-outline:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+  transform:translateY(-4px);
+}
+
+/* MARQUEE */
+
+.marquee{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+  white-space:nowrap;
+  padding:18px 0;
+}
+
+.marquee-track{
+  display:inline-block;
+  animation:marquee 22s linear infinite;
+}
+
+.marquee span{
+  margin:0 30px;
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:4px;
+}
+
+@keyframes marquee{
+  to{transform:translateX(-50%)}
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.about-box{
+  border:1px solid var(--line);
+  background:var(--glass);
+  padding:40px;
+  border-radius:25px;
+  position:relative;
+  overflow:hidden;
+}
+
+.about-box:before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:rgba(212,175,55,.06);
+  right:-80px;
+  top:-80px;
+}
+
+.about-box h3{
+  font-size:30px;
+  margin-bottom:18px;
+}
+
+.about-box p{
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+.about-points{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:25px;
+}
+
+.point{
+  padding:15px;
+  border:1px solid var(--line);
+  border-radius:14px;
+}
+
+.point strong{
+  color:var(--gold);
+  display:block;
+  margin-bottom:4px;
+}
+
+/* SERVICES */
+
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.service-card{
+  padding:25px 20px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--glass);
+  min-height:150px;
+  transition:.4s ease;
+}
+
+.service-number{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.service-card h3{
+  font-size:16px;
+  margin:13px 0 8px;
+}
+
+.service-card p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.service-card:hover{
+  transform:translateY(-8px);
+  border-color:var(--gold);
+  box-shadow:0 18px 45px rgba(212,175,55,.08);
+}
+
+/* PROJECTS */
+
+.projects{
+  background:#0b0b0b;
+}
+
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.project-card{
+  min-height:270px;
+  padding:35px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:
+    linear-gradient(145deg,rgba(212,175,55,.07),rgba(255,255,255,.02));
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  position:relative;
+  overflow:hidden;
+  transition:.45s ease;
+}
+
+.project-card:before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  border:1px solid rgba(212,175,55,.15);
+  right:-60px;
+  top:-60px;
+  transition:.5s ease;
+}
+
+.project-card:hover{
+  transform:translateY(-10px);
+  border-color:var(--gold);
+}
+
+.project-card:hover:before{
+  transform:scale(1.4);
+}
+
+.project-tag{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:3px;
+  margin-bottom:10px;
+}
+
+.project-card h3{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.project-card p{
+  color:var(--muted);
+  max-width:500px;
+}
+
+.project-link{
+  margin-top:20px;
+  color:var(--gold);
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14px;
+}
+
+/* WHY WEBMOON */
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.why-card{
+  text-align:center;
+  padding:35px 25px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:var(--glass);
+  transition:.4s ease;
+}
+
+.why-icon{
+  font-size:35px;
+  margin-bottom:15px;
+}
+
+.why-card h3{
+  margin-bottom:10px;
+}
+
+.why-card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.why-card:hover{
+  transform:translateY(-8px);
+  border-color:var(--gold);
+}
+
+/* PROCESS */
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.process-card{
+  padding:30px 20px;
+  border-left:2px solid var(--gold);
+  background:rgba(255,255,255,.025);
+}
+
+.process-number{
+  color:var(--gold);
+  font-size:28px;
+  font-weight:bold;
+}
+
+.process-card h3{
+  margin:12px 0 8px;
+}
+
+.process-card p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* FAQ */
+
+.faq{
+  background:#0b0b0b;
+}
+
+.faq-list{
+  max-width:850px;
+  margin:auto;
+}
+
+.faq-item{
+  border-bottom:1px solid var(--line);
+}
+
+.faq-question{
+  width:100%;
+  border:0;
+  background:none;
+  color:var(--cream);
+  padding:23px 0;
+  text-align:left;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.faq-plus{
+  color:var(--gold);
+  font-size:25px;
+  transition:.3s ease;
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease;
+}
+
+.faq-answer p{
+  color:var(--muted);
+  padding:0 35px 20px 0;
+  font-size:14px;
+}
+
+.faq-item.active .faq-plus{
+  transform:rotate(45deg);
+}
+
+/* CONTACT */
+
+.contact-box{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+  padding:65px 30px;
+  border:1px solid var(--line);
+  border-radius:30px;
+  background:
+    radial-gradient(circle at center,rgba(212,175,55,.08),transparent 60%);
+}
+
+.contact-box h2{
+  font-size:clamp(2.2rem,5vw,4rem);
+  margin-bottom:15px;
+}
+
+.contact-box p{
+  color:var(--muted);
+  max-width:600px;
+  margin:0 auto 30px;
+}
+
+.contact-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.contact-link{
+  padding:13px 20px;
+  border:1px solid var(--line);
+  border-radius:30px;
+  text-decoration:none;
+  color:var(--cream);
+  font-size:13px;
+  transition:.3s ease;
+}
+
+.contact-link:hover{
+  color:var(--gold);
+  border-color:var(--gold);
+  transform:translateY(-3px);
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:35px 6%;
+  text-align:center;
+}
+
+footer .footer-logo{
+  color:var(--gold);
+  font-weight:bold;
+  letter-spacing:4px;
+}
+
+footer p{
+  color:#777;
+  font-size:12px;
+  margin-top:8px;
+}
+
+/* SCROLL REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* CURSOR GLOW */
+
+.cursor-glow{
+  position:fixed;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(
+    circle,
+    rgba(212,175,55,.09),
+    transparent 68%
+  );
+  transform:translate(-50%,-50%);
+  z-index:9998;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .nav-links{
+    gap:15px;
+  }
+
+  .nav-links a{
+    font-size:12px;
+  }
+
+  .service-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .process-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:768px){
+
+  section{
+    padding:80px 20px;
+  }
+
+  .navbar{
+    padding:15px 20px;
+  }
+
+  .menu-btn{
+    display:flex;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:72px;
+    left:15px;
+    right:15px;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    padding:12px;
+    background:rgba(8,8,8,.97);
+    backdrop-filter:blur(20px);
+    border:1px solid var(--line);
+    border-radius:20px;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(-15px) scale(.97);
+    transition:.35s ease;
+    box-shadow:0 25px 60px rgba(0,0,0,.6);
+  }
+
+  .nav-links.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0) scale(1);
+  }
+
+  .nav-links a{
+    padding:14px;
+    text-align:center;
+    border-radius:12px;
+    font-size:14px;
+  }
+
+  .nav-links a:hover{
+    background:rgba(212,175,55,.08);
+  }
+
+  .hero{
+    padding:120px 20px 70px;
+  }
+
+  .hero h1{
+    letter-spacing:-3px;
+  }
+
+  .moon-wrap{
+    transform:scale(.8);
+    margin-bottom:10px;
+  }
+
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .about-box{
+    padding:28px 22px;
+  }
+
+  .about-points{
+    grid-template-columns:1fr;
+  }
+
+  .service-grid{
+    grid-template-columns:1fr;
+  }
+
+  .project-grid{
+    grid-template-columns:1fr;
+  }
+
+  .why-grid{
+    grid-template-columns:1fr;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr;
+  }
+
+  .project-card{
+    min-height:240px;
+    padding:28px 23px;
+  }
+
+  .contact-box{
+    padding:45px 20px;
+  }
+
+  .contact-links{
+    flex-direction:column;
+  }
+
+  .contact-link{
+    width:100%;
+  }
+
+  .cursor-glow{
+    display:none;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .logo{
+    font-size:18px;
+    letter-spacing:3px;
+  }
+
+  .hero h1{
+    font-size:3.2rem;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+  }
+
+  .hero-buttons .btn{
+    width:100%;
+  }
+
+  .section-title{
+    margin-bottom:38px;
+  }
+
+}
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *:before,
+  *:after{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-moon"></div>
+    <div class="loader-text">WEBMOON</div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+
+<header class="navbar" id="navbar">
+
+  <div class="nav-container">
+
+    <a href="#home" class="logo">
+      WEB<span>MOON</span>
+    </a>
+
+    <button
+      class="menu-btn"
+      id="menuBtn"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#why">Why Webmoon</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="stars"></div>
+
+  <div class="hero-content">
+
+    <div class="moon-wrap">
+
+      <div class="moon"></div>
+
+      <div class="orbit"></div>
+
+    </div>
+
+    <div class="gold"
+         style="letter-spacing:5px;font-size:12px;">
+      WEB DESIGN STUDIO
+    </div>
+
+    <h1>
+      WEB<span>MOON</span>
+    </h1>
+
+    <div class="hero-subtitle">
+      Your Vision. Our Web.
+    </div>
+
+    <p class="hero-description">
+      Creative, modern and responsive websites designed
+      to give your business a strong digital presence.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="#projects" class="btn btn-gold">
+        Explore Projects
+      </a>
+
+      <a href="#contact" class="btn btn-outline">
+        Let's Work Together
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MARQUEE -->
+
+<div class="marquee">
+
+  <div class="marquee-track">
+
+    <span>WEB DESIGN</span>
+    <span>CREATIVE DEVELOPMENT</span>
+    <span>RESPONSIVE WEBSITES</span>
+    <span>MODERN UI</span>
+    <span>WEBMOON</span>
+
+    <span>WEB DESIGN</span>
+    <span>CREATIVE DEVELOPMENT</span>
+    <span>RESPONSIVE WEBSITES</span>
+    <span>MODERN UI</span>
+    <span>WEBMOON</span>
+
+  </div>
+
+</div>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="container">
+
+    <div class="section-title reveal">
+
+      <div class="small">ABOUT WEBMOON</div>
+
+      <h2>We turn ideas into <span class="gold">web experiences.</span></h2>
+
+      <p>
+        Webmoon is a creative web design studio focused on
+        building clean, modern and responsive digital experiences.
+      </p>
+
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-box reveal">
+
+        <h3>
+          Your idea deserves a
+          <span class="gold">beautiful web presence.</span>
+        </h3>
+
+        <p>
+          Every business is different. That's why we create
+          websites based on your brand, audience and goals.
+        </p>
+
+        <p>
+          From simple portfolio websites to business,
+          restaurant, real-estate and custom websites,
+          Webmoon focuses on practical and attractive solutions.
+        </p>
+
+        <a href="#contact" class="btn btn-gold">
+          Start a Project
+        </a>
+
+      </div>
+
+      <div class="about-box reveal">
+
+        <h3>Our Focus</h3>
+
+        <div class="about-points">
+
+          <div class="point">
+            <strong>01</strong>
+            Modern Design
+          </div>
+
+          <div class="point">
+            <strong>02</strong>
+            Responsive Layout
+          </div>
+
+          <div class="point">
+            <strong>03</strong>
+            Clean Experience
+          </div>
+
+          <div class="point">
+            <strong>04</strong>
+            Client Focused
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+  <div class="container">
+
+    <div class="section-title reveal">
+
+      <div class="small">WHAT WE DO</div>
+
+      <h2>Our <span class="gold">Services</span></h2>
+
+      <p>
+        Website design, development and creative digital services
+        for different types of clients.
+      </p>
+
+    </div>
+
+    <div class="service-grid">
+
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <h3>Business Websites</h3>
+        <p>Professional websites for businesses and brands.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">02</div>
+        <h3>Portfolio Websites</h3>
+        <p>Personal portfolios to showcase skills and work.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">03</div>
+        <h3>Personal Websites</h3>
+        <p>Unique websites designed around your identity.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <h3>Landing Pages</h3>
+        <p>Focused landing pages for products and campaigns.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">05</div>
+        <h3>Restaurant & Café</h3>
+        <p>Beautiful websites for restaurants and cafés.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">06</div>
+        <h3>Corporate Websites</h3>
+        <p>Clean and professional corporate web presence.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">07</div>
+        <h3>Service-based Websites</h3>
+        <p>Websites for agencies, professionals and services.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">08</div>
+        <h3>School & College</h3>
+        <p>Institutional websites with clear information.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">09</div>
+        <h3>Real Estate Websites</h3>
+        <p>Property showcase websites with modern layouts.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">10</div>
+        <h3>Hotel Websites</h3>
+        <p>Elegant websites for hotels and stays.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">11</div>
+        <h3>Event Websites</h3>
+        <p>Event pages for celebrations and occasions.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">12</div>
+        <h3>Blog Websites</h3>
+        <p>Clean platforms for articles and content.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">13</div>
+        <h3>Custom Websites</h3>
+        <p>Custom web solutions based on your requirements.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">14</div>
+        <h3>Instagram Setup</h3>
+        <p>Professional Instagram profile setup.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">15</div>
+        <h3>Social Media Design</h3>
+        <p>Creative social media visuals for your brand.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">16</div>
+        <h3>Logo Design</h3>
+        <p>Simple and memorable logo concepts.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">17</div>
+        <h3>Business Card Design</h3>
+        <p>Professional business card designs.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">18</div>
+        <h3>Brochure Design</h3>
+        <p>Digital and print-ready brochure concepts.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">19</div>
+        <h3>Basic Brand Identity</h3>
+        <p>Visual elements to establish your brand identity.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">20</div>
+        <h3>Website Maintenance</h3>
+        <p>Updates and ongoing website support.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">21</div>
+        <h3>Instagram Page Management</h3>
+        <p>Basic management and content support.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">22</div>
+        <h3>Domain & Hosting Assistance</h3>
+        <p>Guidance with domain and hosting setup.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section class="projects" id="projects">
+
+  <div class="container">
+
+    <div class="section-title reveal">
+
+      <div class="small">OUR WORK</div>
+
+      <h2>Selected <span class="gold">Projects</span></h2>
+
+      <p>
+        A few website concepts created by Webmoon.
+      </p>
+
+    </div>
+
+    <div class="project-grid">
+
+      <div class="project-card reveal">
+
+        <div class="project-tag">
+          BUSINESS WEBSITE
+        </div>
+
+        <h3>NOVA Business Demo</h3>
+
+        <p>
+          A modern business website concept with
+          clean sections and responsive design.
+        </p>
+
+        <a
+          href="https://aharini797.github.io/NOVA-business-demo/"
+          target="_blank"
+          class="project-link"
+        >
+          View Project →
+        </a>
+
+      </div>
+
+      <div class="project-card reveal">
+
+        <div class="project-tag">
+          RESTAURANT & CAFÉ
+        </div>
+
+        <h3>Restaurants & Café Web</h3>
+
+        <p>
+          A stylish restaurant and café website
+          designed for a modern food business.
+        </p>
+
+        <a
+          href="https://aharini797.github.io/restaurants-cafe-web/"
+          target="_blank"
+          class="project-link"
+        >
+          View Project →
+        </a>
+
+      </div>
+
+      <div class="project-card reveal">
+
+        <div class="project-tag">
+          REAL ESTATE
+        </div>
+
+        <h3>LANDORA Land Demo</h3>
+
+        <p>
+          A property and land showcase website
+          with an immersive long-scroll experience.
+        </p>
+
+        <a
+          href="https://aharini797.github.io/LANDORA-land-demo/"
+          target="_blank"
+          class="project-link"
+        >
+          View Project →
+        </a>
+
+      </div>
+
+      <div class="project-card reveal">
+
+        <div class="project-tag">
+          E-COMMERCE
+        </div>
+
+        <h3>E-Commerce Web</h3>
+
+        <p>
+          A modern e-commerce website concept
+          with product-focused presentation.
+        </p>
+
+        <a
+          href="https://aharini797.github.io/ecommerce-web/"
+          target="_blank"
+          class="project-link"
+        >
+          View Project →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- WHY WEBMOON -->
+
+<section id="why">
+
+  <div class="container">
+
+    <div class="section-title reveal">
+
+      <div class="small">WHY WEBMOON</div>
+
+      <h2>Built around your <span class="gold">vision.</span></h2>
+
+      <p>
+        Our approach focuses on design, usability and
+        a smooth experience across devices.
+      </p>
+
+    </div>
+
+    <div class="why-grid">
+
+      <div class="why-card reveal">
+
+        <div class="why-icon">✦</div>
+
+        <h3>Creative Design</h3>
+
+        <p>
+          Designs that give your brand its own visual identity.
+        </p>
+
+      </div>
+
+      <div class="why-card reveal">
+
+        <div class="why-icon">◈</div>
+
+        <h3>Responsive</h3>
+
+        <p>
+          Websites designed to work across phones,
+          tablets and desktops.
+        </p>
+
+      </div>
+
+      <div class="why-card reveal">
+
+        <div class="why-icon">∞</div>
+
+        <h3>Client Focused</h3>
+
+        <p>
+          We build around your requirements and goals.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROCESS -->
+
+<section id="process">
+
+  <div class="container">
+
+    <div class="section-title reveal">
+
+      <div class="small">HOW IT WORKS</div>
+
+      <h2>Our <span class="gold">Process</span></h2>
+
+      <p>
+        A simple journey from your idea to your website.
+      </p>
+
+    </div>
+
+    <div class="process-grid">
+
+      <div class="process-card reveal">
+
+        <div class="process-number">01</div>
+
+        <h3>Discuss</h3>
+
+        <p>
+          Understand your business, requirements and goals.
+        </p>
+
+      </div>
+
+      <div class="process-card reveal">
+
+        <div class="process-number">02</div>
+
+        <h3>Design</h3>
+
+        <p>
+          Plan the layout, visual direction and user experience.
+        </p>
+
+      </div>
+
+      <div class="process-card reveal">
+
+        <div class="process-number">03</div>
+
+        <h3>Develop</h3>
+
+        <p>
+          Build the website with responsive design.
+        </p>
+
+      </div>
+
+      <div class="process-card reveal">
+
+        <div class="process-number">04</div>
+
+        <h3>Launch</h3>
+
+        <p>
+          Final checks and preparation for your online presence.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FAQ -->
+
+<section class="faq" id="faq">
+
+  <div class="container">
+
+    <div class="section-title reveal">
+
+      <div class="small">QUESTIONS</div>
+
+      <h2>Frequently Asked <span class="gold">Questions</span></h2>
+
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+
+        <button class="faq-question">
+          What type of websites do you create?
+          <span class="faq-plus">+</span>
+        </button>
+
+        <div class="faq-answer">
+          <p>
+            We create business, portfolio, personal,
+            restaurant, corporate, real estate, hotel,
+            event, blog, landing page and custom websites.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="faq-item reveal">
+
+        <button class="faq-question">
+          Will the website work on mobile?
+          <span class="faq-plus">+</span>
+        </button>
+
+        <div class="faq-answer">
+          <p>
+            Yes. Responsive design is considered so the
+            website can adapt to different screen sizes.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="faq-item reveal">
+
+        <button class="faq-question">
+          Can you create a custom website?
+          <span class="faq-plus">+</span>
+        </button>
+
+        <div class="faq-answer">
+          <p>
+            Yes. Custom websites can be designed according
+            to the client's specific requirements.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="faq-item reveal">
+
+        <button class="faq-question">
+          How can I contact Webmoon?
+          <span class="faq-plus">+</span>
+        </button>
+
+        <div class="faq-answer">
+          <p>
+            You can contact Webmoon through email or
+            Instagram using the contact links below.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+  <div class="container">
+
+    <div class="contact-box reveal">
+
+      <div class="gold"
+           style="letter-spacing:4px;font-size:12px;">
+        LET'S CREATE
+      </div>
+
+      <h2>
+        Have an idea?
+        <span class="gold">Let's build it.</span>
+      </h2>
+
+      <p>
+        Tell us about your website idea and let's
+        create something meaningful for your brand.
+      </p>
+
+      <div class="contact-links">
+
+        <a
+          href="mailto:webmoon1310@gmail.com"
+          class="contact-link"
+        >
+          ✉ Email
+        </a>
+
+        <a
+          href="https://www.instagram.com/web_moon_official/"
+          target="_blank"
+          class="contact-link"
+        >
+          ◎ Instagram
+        </a>
+
+        <a
+          href="https://github.com/aharini797"
+          target="_blank"
+          class="contact-link"
+        >
+          ◇ GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/harini-anand-7b9a7135b/"
+          target="_blank"
+          class="contact-link"
+        >
+          in LinkedIn
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="footer-logo">
+    WEBMOON
+  </div>
+
+  <p>
+    Your Vision. Our Web.
+  </p>
+
+  <p>
+    © 2026 Webmoon. All rights reserved.
+  </p>
+
+</footer>
+
+<script>
+
+/* PAGE LOADER */
+
+window.addEventListener("load",function(){
+
+  setTimeout(function(){
+
+    document
+      .getElementById("loader")
+      .classList.add("hide");
+
+  },700);
+
+});
+
+
+/* MOBILE MENU */
+
+const menuBtn =
+  document.getElementById("menuBtn");
+
+const navLinks =
+  document.getElementById("navLinks");
+
+menuBtn.addEventListener("click",function(){
+
+  navLinks.classList.toggle("active");
+
+  menuBtn.classList.toggle("active");
+
+  const open =
+    navLinks.classList.contains("active");
+
+  menuBtn.setAttribute(
+    "aria-expanded",
+    open ? "true" : "false"
+  );
+
+});
+
+
+document
+  .querySelectorAll(".nav-links a")
+  .forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+      navLinks.classList.remove("active");
+
+      menuBtn.classList.remove("active");
+
+      menuBtn.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    });
+
+  });
+
+
+document.addEventListener("click",function(event){
+
+  if(
+    !navLinks.contains(event.target) &&
+    !menuBtn.contains(event.target)
+  ){
+
+    navLinks.classList.remove("active");
+
+    menuBtn.classList.remove("active");
+
+  }
+
+});
+
+
+/* NAVBAR SCROLL */
+
+const navbar =
+  document.getElementById("navbar");
+
+window.addEventListener("scroll",function(){
+
+  if(window.scrollY > 40){
+
+    navbar.classList.add("scrolled");
+
+  }else{
+
+    navbar.classList.remove("scrolled");
+
+  }
+
+});
+
+
+/* FAQ */
+
+document
+  .querySelectorAll(".faq-question")
+  .forEach(function(button){
+
+    button.addEventListener("click",function(){
+
+      const item =
+        button.closest(".faq-item");
+
+      const answer =
+        item.querySelector(".faq-answer");
+
+      document
+        .querySelectorAll(".faq-item")
+        .forEach(function(other){
+
+          if(other !== item){
+
+            other.classList.remove("active");
+
+            other
+              .querySelector(".faq-answer")
+              .style.maxHeight = null;
+
+          }
+
+        });
+
+      item.classList.toggle("active");
+
+      if(item.classList.contains("active")){
+
+        answer.style.maxHeight =
+          answer.scrollHeight + "px";
+
+      }else{
+
+        answer.style.maxHeight = null;
+
+      }
+
+    });
+
+  });
+
+
+/* SCROLL REVEAL */
+
+const revealItems =
+  document.querySelectorAll(".reveal");
+
+if("IntersectionObserver" in window){
+
+  const observer =
+    new IntersectionObserver(
+      function(entries){
+
+        entries.forEach(function(entry){
+
+          if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold:.1
+      }
+    );
+
+  revealItems.forEach(function(item){
+
+    observer.observe(item);
+
+  });
+
+}else{
+
+  revealItems.forEach(function(item){
+
+    item.classList.add("show");
+
+  });
+
+}
+
+
+/* CURSOR GLOW */
+
+const glow =
+  document.querySelector(".cursor-glow");
+
+if(glow && window.innerWidth > 768){
+
+  document.addEventListener(
+    "mousemove",
+    function(event){
+
+      glow.style.left =
+        event.clientX + "px";
+
+      glow.style.top =
+        event.clientY + "px";
+
+    }
+  );
+
+}
+
+
+/* CARD TILT */
+
+if(window.innerWidth > 900){
+
+  document
+    .querySelectorAll(
+      ".service-card,.project-card,.why-card"
+    )
+    .forEach(function(card){
+
+      card.addEventListener(
+        "mousemove",
+        function(event){
+
+          const rect =
+            card.getBoundingClientRect();
+
+          const x =
+            event.clientX - rect.left;
+
+          const y =
+            event.clientY - rect.top;
+
+          const rotateY =
+            ((x - rect.width / 2) /
+            rect.width) * 4;
+
+          const rotateX =
+            ((y - rect.height / 2) /
+            rect.height) * -4;
+
+          card.style.transform =
+            `perspective(800px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateY(-6px)`;
+
+        }
+      );
+
+      card.addEventListener(
+        "mouseleave",
+        function(){
+
+          card.style.transform = "";
+
+        }
+      );
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
